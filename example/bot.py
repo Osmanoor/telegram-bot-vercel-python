@@ -20,8 +20,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> 
     await update.message.reply_html(text=f"Generating meme for: {user_description}")
 
     json_file = "templates.json"
-    template_name, texts = generator.generate_meme_from_description(user_description, json_file)
-    meme_url = memegen.generate_meme(template_name, texts, 'meme.jpg')
+    template_name, texts = await generator.generate_meme_from_description(user_description, json_file)
+    meme_url = await memegen.generate_meme(template_name, texts, 'meme.jpg')
 
     await update.message.reply_html(text=f"Here is your meme: {meme_url}")
 

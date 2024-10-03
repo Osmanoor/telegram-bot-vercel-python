@@ -48,7 +48,7 @@ def generate_meme_text(template, description, num_lines):
     return meme_text_lines
 
 # Step 5: Main function that orchestrates the entire process
-def generate_meme_from_description(description, json_file):
+async def generate_meme_from_description(description, json_file):
     # Load templates
     templates = load_templates(json_file)
 

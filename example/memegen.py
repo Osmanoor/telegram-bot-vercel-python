@@ -16,7 +16,7 @@ def replace_with_tilde_keys(text):
     
     return text
 
-def generate_meme(template, text_list, save_path):
+async def generate_meme(template, text_list, save_path):
     """
     Generates a meme using the Memegen API and saves it locally.
 
