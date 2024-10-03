@@ -7,6 +7,8 @@ from telegram.ext import (
     filters,
 )
 from os import getenv
+import example.generator as generator
+import example.memegen as memegen
 
 # Define a few command handlers.
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
@@ -15,13 +17,13 @@ async def help(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_html(text="help me!")
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     user_description = update.message.text
-    update.message.reply_text(f"Generating meme for: {user_description}")
+    update.message.reply_html(f"Generating meme for: {user_description}")
 
     json_file = "templates.json"
-    # template_name, texts = generator.generate_meme_from_description(user_description, json_file)
-    meme_url = ""#memegen.generate_meme(template_name, texts, 'meme.jpg')
+    template_name, texts = generator.generate_meme_from_description(user_description, json_file)
+    meme_url = memegen.generate_meme(template_name, texts, 'meme.jpg')
 
-    update.message.reply_text(f"Here is your meme: {meme_url}")
+    update.message.reply_html(f"Here is your meme: {meme_url}")
 
 async def bot_tele(text):
     # Create application
