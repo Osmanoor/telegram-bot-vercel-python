@@ -38,7 +38,7 @@ async def bot_tele(text):
 
 
     # Start application
-    await application.bot.set_webhook(url=getenv("webhook"))
+    # await application.bot.set_webhook(url=getenv("webhook"))
     await application.update_queue.put(
             Update.de_json(data=text, bot=application.bot)
         )
